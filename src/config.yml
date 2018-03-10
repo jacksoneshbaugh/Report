@@ -1,0 +1,15 @@
+messages:
+  # You can use the following placeholders:
+  # %reported% - player who is reported
+  # %reporter% - player who reports
+  # %reason% - the report reason
+  
+  #Sent to players who have the "report.notify" permission.
+  report-notification: "&4&l[REPORTS] &c%reported% &6was reported by &c%reporter% &6for &c%reason%&6."
+  #Sent to the reporter upon report.
+  report-message: "&aYou have reported &e%reported% &afor &e%reason%&a."
+  #This is printed in chat once per report during the listing of reports. 
+  report-list: "&6Reporter: &c%reporter% &8| &6Reported: &c%reported% &8| &6Reason: &c%reason%"
+  #Sent to the player who clears the reports. 
+  #NO PLACEHOLDERS WILL WORK HERE.
+  report-clear-message: "&aYou cleared reports."

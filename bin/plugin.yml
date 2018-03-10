@@ -1,0 +1,19 @@
+name: Reports
+version: 1.0.0
+main: me.itguy12.report.Main
+author: ITGuy12
+description: "Player reporting system. Just for you! :D :D :D"
+commands:
+  report:
+    description: Report a player. Requires the report.report premission.
+  clearreports: 
+    description: Clear all reports on the server. Requires the report.reportsclear permission.
+  listreports:
+    description: List all reports. Requires the report.listreport permission.
+permissions:
+  report.report:
+    description: Needed to use /report. 
+  report.listreport: 
+    description: Needed to use /listreports.
+  report.reportsclear: 
+    description: Needed to use /clearreports.
