@@ -19,6 +19,8 @@ public class Main extends JavaPlugin {
 
 	private ArrayList<Report> reports = new ArrayList<>();
 
+	private int configVersion = 2;
+
 	@Override
 	public void onEnable() {
 		if (!getDataFolder().exists())
@@ -27,6 +29,14 @@ public class Main extends JavaPlugin {
 		File file = new File(getDataFolder(), "config.yml");
 
 		if (!file.exists()) {
+			try (InputStream in = getResource("config.yml")) {
+				Files.copy(in, file.toPath());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (!(getConfig().getInt("version") == configVersion)) {
 			try (InputStream in = getResource("config.yml")) {
 				Files.copy(in, file.toPath());
 			} catch (IOException e) {
@@ -89,13 +99,14 @@ public class Main extends JavaPlugin {
 				reportMessage = reportMessage.replaceAll("%reported%", r.getReported().getName());
 				reportMessage = reportMessage.replaceAll("%reason%", r.getReason());
 				reportMessage = ChatColor.translateAlternateColorCodes('&', reportMessage);
-				
+
 				System.out.println(r.getReason());
-				
+
 				p.sendMessage(reportMessage);
 				return true;
 			} else {
-				p.sendMessage(ChatColor.RED + "/report <player> <reason>");
+				p.sendMessage(ChatColor.translateAlternateColorCodes('&', 
+						getConfig().getString("messages.report-syntax")));
 				return false;
 			}
 			// /listreports -> report.reportlist
@@ -105,11 +116,11 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 
-			if(reports.isEmpty()) {
+			if (reports.isEmpty()) {
 				cs.sendMessage(ChatColor.GREEN + "No reports.");
 				return true;
 			}
-			
+
 			for (Report r : reports) {
 				String listMessage = getConfig().getString("messages.report-list");
 				listMessage = listMessage.replaceAll("%reporter%", r.getReporter().getName());
