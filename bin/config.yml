@@ -5,7 +5,7 @@ messages:
   # %reason% - the report reason
   
   # Sent when the command is used incorrectly. Cannot use any of the placeholders.
-  report-syntax: "&c/report <player>"
+  report-syntax: "&c/report <player> <reason>"  
   #Sent to players who have the "report.notify" permission.
   report-notification: "&4&l[REPORTS] &c%reported% &6was reported by &c%reporter% &6for &c%reason%&6."
   #Sent to the reporter upon report.
