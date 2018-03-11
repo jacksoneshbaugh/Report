@@ -10,6 +10,9 @@ commands:
     description: Clear all reports on the server. Requires the report.reportsclear permission.
   listreports:
     description: List all reports. Requires the report.listreport permission.
+  reportsreload:
+    aliases: [reportreload]
+    description: Reload the plugin. Requires the report.reload permission.
 permissions:
   report.report:
     description: Needed to use /report. 
@@ -17,3 +20,5 @@ permissions:
     description: Needed to use /listreports.
   report.reportsclear: 
     description: Needed to use /clearreports.
+  report.reload:
+    description: Needed to use /reportsreload

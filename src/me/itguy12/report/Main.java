@@ -153,6 +153,14 @@ public class Main extends JavaPlugin {
 			cs.sendMessage(ChatColor.translateAlternateColorCodes('&',
 					getConfig().getString("messages.report-clear-message")));
 			return true;
+		}else if (cmd.getName().equalsIgnoreCase("reportsreload")) {
+			if(!cs.hasPermission("report.reload")) {
+				cs.sendMessage(ChatColor.RED + "No permission.");
+				return true;
+			}
+			reloadConfig();
+			cs.sendMessage(ChatColor.GREEN + "Reloaded.");
+			return true;
 		}
 		return false;
 	}
