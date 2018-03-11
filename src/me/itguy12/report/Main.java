@@ -17,7 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
-	private ArrayList<Report> reports = new ArrayList<>();
+	public static ArrayList<Report> reports = new ArrayList<>();
 
 	private int configVersion = 3;
 	private boolean staffBypass;
@@ -46,7 +46,8 @@ public class Main extends JavaPlugin {
 		}
 		
 		staffBypass = getConfig().getBoolean("staff-bypass");
-
+		Bukkit.getServer().getPluginManager().registerEvents(new ManageGuiManager(), this);
+		ManageGuiManager.onEnable();
 	}
 
 	public boolean onCommand(CommandSender cs, Command cmd, String s, String[] args) {
@@ -65,7 +66,7 @@ public class Main extends JavaPlugin {
 				return false;
 			}
 
-			if (args.length >= 2) {
+			if (args.length >= 1) {
 				Player target = Bukkit.getPlayer(args[0]);
 				if (target == null) {
 					p.sendMessage(ChatColor.RED + "That is not an online player!");
@@ -82,7 +83,7 @@ public class Main extends JavaPlugin {
 				String reason = "";
 
 				for (String str : a) {
-					if (!str.equals(p.getName()) && !str.equals(target.getName())) {
+					if (!str.equalsIgnoreCase(p.getName()) && !str.equalsIgnoreCase(target.getName())) {
 						reason = reason + str + " ";
 					}
 				}
@@ -109,7 +110,6 @@ public class Main extends JavaPlugin {
 				reportMessage = reportMessage.replaceAll("%reason%", r.getReason());
 				reportMessage = ChatColor.translateAlternateColorCodes('&', reportMessage);
 
-				System.out.println(r.getReason());
 
 				p.sendMessage(reportMessage);
 				return true;
@@ -160,6 +160,20 @@ public class Main extends JavaPlugin {
 			}
 			reloadConfig();
 			cs.sendMessage(ChatColor.GREEN + "Reloaded.");
+			return true;
+		}else if(cmd.getName().equalsIgnoreCase("managereports")) {
+			if(!(cs instanceof Player)) {
+				cs.sendMessage(ChatColor.RED + "You cannot use the GUI!");
+				return true;
+			}
+			
+			Player p = (Player) cs;
+			
+			if(!p.hasPermission("report.gui")) {
+				p.sendMessage(ChatColor.RED + "No permission.");
+				return true;
+			}
+			ManageGuiManager.show(p);
 			return true;
 		}
 		return false;

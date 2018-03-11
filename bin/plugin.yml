@@ -1,5 +1,5 @@
 name: Reports
-version: 1.0.0
+version: 1.1.0
 main: me.itguy12.report.Main
 author: ITGuy12
 description: "Player reporting system. Just for you! :D :D :D"
@@ -13,6 +13,8 @@ commands:
   reportsreload:
     aliases: [reportreload]
     description: Reload the plugin. Requires the report.reload permission.
+  managereports:
+    description: Opens up the report management GUI.
 permissions:
   report.report:
     description: Needed to use /report. 
@@ -21,4 +23,6 @@ permissions:
   report.reportsclear: 
     description: Needed to use /clearreports.
   report.reload:
-    description: Needed to use /reportsreload
+    description: Needed to use /reportsreload.
+  report.gui:
+    description: Needed to use /managereports.
