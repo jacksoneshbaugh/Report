@@ -15,6 +15,11 @@ messages:
   #Sent to the player who clears the reports. 
   #NO PLACEHOLDERS WILL WORK HERE.
   report-clear-message: "&aYou cleared reports."
-  
+
+# Should staff with the permission 'report.notify' not be allowed to be reported?
+staff-bypass: false
+
+
+# DO NOT TOUCH THIS
 version: 2
   

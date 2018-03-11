@@ -20,7 +20,8 @@ public class Main extends JavaPlugin {
 	private ArrayList<Report> reports = new ArrayList<>();
 
 	private int configVersion = 2;
-
+	private boolean staffBypass;
+	
 	@Override
 	public void onEnable() {
 		if (!getDataFolder().exists())
@@ -43,6 +44,8 @@ public class Main extends JavaPlugin {
 				e.printStackTrace();
 			}
 		}
+		
+		staffBypass = getConfig().getBoolean("staff-bypass");
 
 	}
 
@@ -68,6 +71,12 @@ public class Main extends JavaPlugin {
 					p.sendMessage(ChatColor.RED + "That is not an online player!");
 					return true;
 				}
+				
+				if(staffBypass && target.hasPermission("report.notify")) {
+					p.sendMessage(ChatColor.RED + "That player bypassed that command.");
+					return true;
+				}
+				
 				List<String> a = Arrays.asList(args);
 
 				String reason = "";
