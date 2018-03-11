@@ -39,6 +39,7 @@ public class Main extends JavaPlugin {
 
 		if (!(getConfig().getInt("version") == configVersion)) {
 			try (InputStream in = getResource("config.yml")) {
+				file.delete();
 				Files.copy(in, file.toPath());
 			} catch (IOException e) {
 				e.printStackTrace();
