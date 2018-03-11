@@ -10,6 +10,9 @@ messages:
   report-notification: "&4&l[REPORTS] &c%reported% &6was reported by &c%reporter% &6for &c%reason%&6."
   #Sent to the reporter upon report.
   report-message: "&aYou have reported &e%reported% &afor &e%reason%&a."
+  #Sent to the player who tries to list reports when there are none.
+  #NO PLACEHOLDERS WORK HERE.
+  no-reports: "&aNo reports."
   #This is printed in chat once per report during the listing of reports. 
   report-list: "&6Reporter: &c%reporter% &8| &6Reported: &c%reported% &8| &6Reason: &c%reason%"
   #Sent to the player who clears the reports. 
@@ -21,5 +24,5 @@ staff-bypass: false
 
 
 # DO NOT TOUCH THIS
-version: 2
+version: 3
   

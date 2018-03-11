@@ -19,7 +19,7 @@ public class Main extends JavaPlugin {
 
 	private ArrayList<Report> reports = new ArrayList<>();
 
-	private int configVersion = 2;
+	private int configVersion = 3;
 	private boolean staffBypass;
 	
 	@Override
@@ -126,7 +126,8 @@ public class Main extends JavaPlugin {
 			}
 
 			if (reports.isEmpty()) {
-				cs.sendMessage(ChatColor.GREEN + "No reports.");
+				cs.sendMessage(ChatColor.translateAlternateColorCodes('&',
+						getConfig().getString("messages.no-reports")));
 				return true;
 			}
 
